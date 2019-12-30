@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import {
-  getFetchSuccess,
     getIsFetching,
  } from '../selectors'
 
@@ -10,7 +9,6 @@ import * as loginActions from '../actions'
 
 const mapStateToProps = (state) => {
   return {
-      userList : getFetchSuccess(state),
       isLoading: getIsFetching(state),
   }
 }

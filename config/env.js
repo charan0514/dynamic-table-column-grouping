@@ -62,6 +62,8 @@ const REACT_APP = /^REACT_APP_/i;
 
 function getClientEnvironment(publicUrl) {
   let baseServiceUrl = "", apiRoutes = "";
+  let gSignInKey = "46802133549-a9pe92m3h7jjh9loco771lhu25arqlj8.apps.googleusercontent.com";
+
   switch (process.env.NODE_ENV) {
     case 'production' :
         /** Prod env. service urls */
@@ -86,6 +88,7 @@ function getClientEnvironment(publicUrl) {
         NODE_ENV: process.env.NODE_ENV || 'development',
         REACT_APP_BASE_SERVICE_URL: baseServiceUrl,
         REACT_APP_API_ROUTES: apiRoutes,
+        REACT_APP_GOOGLE_SIGNIN_KEY: gSignInKey,
         // Useful for resolving the correct path to static assets in `public`.
         // For example, <img src={process.env.PUBLIC_URL + '/img/logo.png'} />.
         // This should only be used as an escape hatch. Normally you would put

@@ -1,18 +1,6 @@
-import React from 'react';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import TablePagination from '@material-ui/core/TablePagination';
-import Button from '@material-ui/core/Button';
-import {TableStyled} from './styles';
-import classNames from 'classnames';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import BlackArrowDropDown from '../../assets/arrow-dropdown-black.svg';
-import IconButton from '@material-ui/core/IconButton';
+import React from 'react'
+import {Table} from 'react-bootstrap'
+import {TableStyled} from './styles'
 
 class TableComponent extends React.Component {
     
@@ -25,132 +13,118 @@ class TableComponent extends React.Component {
 
     getTableHeaders = (tableHeader) => {
         return tableHeader.map((col) => {
-            return <TableCell className="" key={col.id}>{col.name}</TableCell>
+            return <td className="" key={col.id}>{col.name}</td>
         })
     }
 
     getTableBodyCells = (inventoryList, date) => {
-        const {tableHeaders} = this.props;
-        const keys = Object.keys(inventoryList)
+        // const {tableHeaders} = this.props;
+        // const keys = Object.keys(inventoryList)
 
-        const bodyCells = []
-        const dateHeader = tableHeaders[0]
-        bodyCells.push(<TableCell key={dateHeader.id} scope="row" rowSpan={keys.length}>{date}</TableCell>)
+        // const bodyCells = []
+        // const dateHeader = tableHeaders[0]
+        // bodyCells.push(<td key={dateHeader.id} scope="row" rowSpan={keys.length}>{date}</td>)
             
-        keys.forEach((n) => {
-            bodyCells.push(<TableCell rowSpan={inventoryList[n].length} scope="row">{n}</TableCell>)
-        })
+        // keys.forEach((n) => {
+        //     bodyCells.push(<td rowSpan={inventoryList[n].length} scope="row">{n}</td>)
+        // })
 
-        keys.forEach((n) => {
-            const modelKeys = Object.keys(n)
-            modelKeys.forEach(m => {
-                const cityKeys = Object.keys(m)
-            })
+        // keys.forEach((n) => {
+        //     const modelKeys = Object.keys(n)
+        //     modelKeys.forEach(m => {
+        //         const cityKeys = Object.keys(m)
+        //     })
            
-        })
+        // })
 
 
 
-        return tableHeaders.map((header) => {
-            return <TableCell key={header.id} scope="row" rowSpan={}>
-                {(id === "date") ? date :
-                inventory[header.id]}
-                </TableCell>
-            }
-        )
+        // return tableHeaders.map((header) => {
+        //     return <td key={header.id} scope="row">
+        //         {(id === "date") ? date :
+        //         inventory[header.id]}
+        //         </td>
+        //     }
+        // )
 
-        const obj = {
-            "2013-09-20": {
-            "Suzuki": {
-              "Swift": {
-                "Bangalore": [
-                  {
-                    "total_leads": 4,
-                    "total_sales": 2,
-                    "total_cash": 289000,
-                    "discount": 20000
-                  }
-                ]
-              },
-              "totalCityCount": 1
-            }
-          }
-        }
+        // const obj = {
+        //     "2013-09-20": {
+        //     "Suzuki": {
+        //       "Swift": {
+        //         "Bangalore": [
+        //           {
+        //             "total_leads": 4,
+        //             "total_sales": 2,
+        //             "total_cash": 289000,
+        //             "discount": 20000
+        //           }
+        //         ]
+        //       },
+        //       "totalCityCount": 1
+        //     }
+        //   }
+        // }
 
-        const newRes = {"2013-09-20": [{name: "suzuki", model: "Swift", cityData: {
-            cityName: "",
-            total_sales: "",
-            total_leads: "",
-            total_cash: "",
-            discount: ""
-        }}]}
+        // const newRes = {"2013-09-20": [{name: "suzuki", model: "Swift", cityData: {
+        //     cityName: "",
+        //     total_sales: "",
+        //     total_leads: "",
+        //     total_cash: "",
+        //     discount: ""
+        // }}]}
     }
 
-    getNestedTableRows = (count) => {
-        const arr = []
-        for(let i=0; i<count; i++) {
-            arr.push(
-                <TableRow key={key} rowSpan={rowCount}>
-                    <TableCell></TableCell>
-                </TableRow>
-            )
-        }
-        return arr
+    getNestedTableRows = (count, obj, mfgName) => {
+        // const arr = []
+        // for(let i=0; i<count; i++) {
+        //     arr.push(
+        //         <tr key={key}>
+        //             <td></td>
+        //             <td></td>
+        //         </tr>
+        //     )
+        // }
+        // return arr
     }
 
     
     
-    getFirstRowModel = (obj) => {
-        const modelKeys = Object.keys(obj)
-        modelKeys.map((key) => {
+    getFirstRowModel = (obj, mfgName) => {
+        const modelKeys = Object.keys(obj[mfgName])
+        const key = modelKeys[0]
+        // modelKeys.map((key) => {
             const cities = Object.keys(obj[key])
+            const firstCity = cities[0]
             return <React.Fragment>
-                    <TableCell>{key}</TableCell>
-                    {cities.map((n) => {
-                        return <TableCell>{n}</TableCell>
-                        obj[key][n].map((m) => {
-                            return <React.Fragment>
-                            <TableCell>{m.totalLeads}</TableCell>
-                            <TableCell>{m.totalSales}</TableCell>
-                            <TableCell>{m.totalCash}</TableCell>
-                            <TableCell>{m.discount}</TableCell>
+                    <td>{mfgName}</td>
+                    <td>{key}</td>
+                    <td>{firstCity}</td>
+                    {obj[key][firstCity].map((m) => {
+                        return <React.Fragment>
+                            <td>{m.totalLeads}</td>
+                            <td>{m.totalSales}</td>
+                            <td>{m.totalCash}</td>
+                            <td>{m.discount}</td>
                             </React.Fragment>
                         })
-                    })}
+                    }
                 </React.Fragment>
-        })
     }
 
 
     getTableBody = (tableData) => {
-        const {rowsPerPage, page} = this.state;
-        const {showPagination} = this.props;
         const dateList = Object.keys(tableData)
         return dateList.map((key) => {
             const rowCount = this.getTotalRowCount(tableData[key])
             const mfgName = this.getMfgObject(tableData[key])
             return <React.Fragment>
-                    <TableRow key={key} rowSpan={rowCount}>
-                        <TableCell>{key}</TableCell>
-                        <TableCell>{mfgName}</TableCell>
-                        {this.getFirstRowModel(tableData[key][mfgName])}
-                    </TableRow>
-                    {...this.getNestedTableRows(rowCount)}
+                    <tr key={key}>
+                        <td rowSpan={rowCount}>{key}</td>
+                        {this.getFirstRowModel(tableData[key], mfgName)}
+                    </tr>
+                    {/* {...this.getNestedTableRows(rowCount, tableData[key], mfgName)} */}
                 </React.Fragment>
         });
-
-
-
-        dateList.forEach((key) => {
-            const mfgKeys = tableData[key]
-            mfgKeys.forEach((n) => {
-                const modelKeys = Object.keys(n)
-                modelKeys.forEach(m => {
-                    const cityKeys = Object.keys(m)
-                })
-               
-            })
-        })
     }
 
     getMfgObject = (obj) => {
@@ -164,20 +138,17 @@ class TableComponent extends React.Component {
 
     render () {
         const {tableHeaders, tableData, showPagination} = this.props;
-        const {rowsPerPage, page} = this.state;
-        const keysArr = Object.keys(tableData)
         return (
             <TableStyled>
-            <Paper className="">
                 <Table className="">
-                    <TableHead>
-                        <TableRow>
+                    <thead>
+                        <tr>
                             {this.getTableHeaders(tableHeaders)}
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>{this.getTableBody(tableData)}</TableBody>
+                        </tr>
+                    </thead>
+                    <tbody>{this.getTableBody(tableData)}</tbody>
                 </Table>
-            </Paper></TableStyled>
+            </TableStyled>
         )
     }
 }

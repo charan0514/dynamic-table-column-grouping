@@ -1,11 +1,8 @@
-import React from 'react';
+import React from 'react'
 import Container from './container'
-import {ContainerStyled} from './styles';
-import isEmpty from 'lodash/isEmpty'
+import {ContainerStyled} from './styles'
 
-// const {REACT_APP_GOOGLE_SIGNIN_KEY} = process.env;
-
- class Dashboard extends React.Component  {
+class Dashboard extends React.Component  {
 
     constructor(props) {
         super(props);
@@ -15,8 +12,7 @@ import isEmpty from 'lodash/isEmpty'
     }
 
     componentDidMount() {
-        const {ActionFetchUsers} = this.props
-        ActionFetchUsers()
+
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -34,13 +30,12 @@ import isEmpty from 'lodash/isEmpty'
             }
             if (!this.map[date][inventory][model]) {
                 this.map[date][inventory][model] = {}
-                //this.map[date][inventory][model].totalRowCount = 0
             }
             if (!this.map[date][inventory][model][city]) {
                 this.map[date][inventory][model][city] = []
                 this.map[date][inventory].totalRowCount += 1 
             }
-            updateCityDataInMap(this.map[date][inventory][model][city], n)
+            this.updateCityDataInMap(this.map[date][inventory][model][city], n)
         })
     }
 
@@ -55,10 +50,10 @@ import isEmpty from 'lodash/isEmpty'
 
 
     render () {
-        const {isLoading, userList} = this.props
+        const {isLoading} = this.props
         return (
             <ContainerStyled>
-                {isLoading ? <div>Fechting data...</div> : <div>Got Data</div>}
+                <div>Home</div>
             </ContainerStyled>
         );
     }
