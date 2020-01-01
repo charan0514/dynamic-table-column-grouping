@@ -7,7 +7,6 @@ const {REACT_APP_GOOGLE_SIGNIN_KEY} = process.env;
 class Login extends React.Component {
 
     responseGoogle = (response) => {
-        //console.log(response)
         const {history} = this.props
         if (!response.error) {
             history.push('/home')

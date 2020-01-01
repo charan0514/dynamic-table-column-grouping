@@ -3,7 +3,7 @@ import * as APIUtils from  '../../utils/APIUtils';
 
 export const getIsFetching = (state) => state.dashboard.isUserFetching
 
-const leads = [{
+export const leads = [{
     "date": "2013-09-20",
     "inventory": "Suzuki",
     "model": "Swift",

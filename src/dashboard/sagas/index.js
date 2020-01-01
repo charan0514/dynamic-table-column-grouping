@@ -37,9 +37,6 @@ function* fetchUsers(action) {
 export const watchGetUsers = takeLatest(FETCH_USERS, fetchUsers)
 
 export default function* Sagas() {
-    // yield [
-    //   fork(takeLatest, FETCH_USERS, fetchUsers),
-    // ];
     yield all ([
       watchGetUsers
     ])
